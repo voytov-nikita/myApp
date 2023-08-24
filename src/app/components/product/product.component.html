@@ -1,0 +1,42 @@
+<div class="bg-blue-300 rounded border-black border pl-2 pr-2 pt-3 pb-1 mb-4">
+    <div class="flex justify-between">
+        <div>
+            <h2 class="font-bold">{{product.title}}</h2>
+            <h2 class="bg-blue-200 rounded p-1 pt-0 inline-block mt-2">{{product.category}}</h2>
+        </div>
+        <img src="{{product.image}}" class="object-contain h-48 w-48 ...">
+    </div>
+    <div class="border-zinc-700 border mb-4 mt-3"></div>
+    <div class="pl-2 pr-2 pt-1 pb-1 text-center text-lg">
+        Description:
+        <div >
+            <h3 *ngIf="descriptionShow" class="bg-blue-200 rounded pl-2 pr-2 pt-1 pb-1"> {{product.description}}</h3>
+            <div class="justify-center flex">
+                
+                <button
+                [ngClass]="{
+                        'bg-red-300': descriptionShow,
+                        'bg-green-300': !descriptionShow
+                            }"
+                    
+                (click)="descriptionShow = !descriptionShow" 
+                class=" p-2 pb-1 pt-1 rounded mt-2" > {{descriptionShow ? "Hide" : "Show"}} </button>
+            </div>
+        </div>
+    </div>
+    <div class="mb-2 mt-1"></div>
+    <div class="pl-2 pr-2 pt-1 pb-1 flex justify-around">
+        <div class="flex">
+            Price:
+            <button
+                (click)="currUsd = !currUsd" 
+                class="ml-3 bg-yellow-200 rounded pl-2 pr-2 pt-1 pb-1"
+            > {{product.price | currency: currUsd ? "USD" : "EUR"}}</button>
+        </div>
+        <div class="flex">
+            Ratings:
+            <h3 class="ml-3 bg-yellow-200 rounded pl-2 pr-2 pt-1 pb-1">{{product.rating.rate}} ({{product.rating.count}})</h3>
+        </div>
+    </div>
+
+</div>
