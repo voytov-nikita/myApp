@@ -1,20 +1,7 @@
+<app-navigation></app-navigation>
 <app-errors></app-errors>
-<div class="max-w-2xl container mx-auto pt-5">
+<div class="max-w-2xl container mx-auto pt-5 mt-[50px] ">
    
-    <h1 class="font-bold mt-3 text-center text-lime-700">It`s: {{title}} by {{author | uppercase}}</h1>
-    <input
-    type="text"
-    class="bg-blue-300 rounded placeholder-current border-black border w-full px-4 py-2 mb-2"
-    placeholder="Filter by ..."
-    [(ngModel)]="term"
-    >
-    <p *ngIf="loading" class="text-center text-lg">Loading...</p>
-
-    <div *ngIf="products$|async as products">
-        <app-product
-            *ngFor="let product of products | filterProducts: term"
-            [product]="product"
-            
-        ></app-product>
-    </div>
+    <router-outlet></router-outlet>
+    
 </div>
